@@ -15,12 +15,6 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #020617);
-    color: #e2e8f0;
-    scroll-behavior: smooth;
-}
-body {
-    font-family: 'Roboto', sans-serif;
     background: linear-gradient(-45deg, #0f172a, #020617, #1e293b, #020617);
     background-size: 400% 400%;
     animation: gradientMove 12s ease infinite;
@@ -28,30 +22,12 @@ body {
     scroll-behavior: smooth;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(56,189,248,0.6);
-}
-
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 /* NAV */
 nav {
     position: fixed;
@@ -59,21 +35,24 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 15px 0;
     z-index: 1000;
 
     background: rgba(15, 23, 42, 0.6);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    overflow-x: auto;
 }
 
 nav a {
-    margin: 0 18px;
+    margin: 8px 18px;
     color: #94a3b8;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
     position: relative;
+    white-space: nowrap;
 }
 
 nav a::after {
@@ -192,36 +171,24 @@ button:hover {
     box-shadow: 0 0 40px rgba(0,0,0,0.8);
 }
 
-/* FAKE AD */
-#fakeAd {
-    display: none;
-    position: fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    background: rgba(0,0,0,0.8);
-    z-index: 9998;
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
 }
 
-#fakeAdInner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    background: #020617;
-    border: 1px solid #38bdf8;
-    padding: 30px;
-    text-align: center;
-    width: 400px;
-    border-radius: 20px;
-
-    box-shadow: 0 0 40px rgba(56,189,248,0.3);
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#fakeAdInner button {
-    margin-top: 10px;
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(56,189,248,0.6);
 }
 
 /* FOOTER */
@@ -232,22 +199,44 @@ footer {
     color: #64748b;
 }
 
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    section {
+        padding: 80px 15px 30px;
+    }
+
+    .card {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    p, li {
+        font-size: 14px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
+}
 </style>
 
 <script>
 function showGoofy() {
     document.getElementById("goofyPic").style.display = "block";
 }
-function showFakeAd() {
-    document.getElementById("fakeAd").style.display = "block";
-}
-setInterval(showFakeAd, 14000);
-
-window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("nav a").forEach(link => {
-        link.addEventListener("click", showFakeAd);
-    });
-});
 </script>
 </head>
 
@@ -269,8 +258,7 @@ window.addEventListener("DOMContentLoaded", () => {
 <div class="card">
 <h1>Hi, I'm Rowel Neo Andrada</h1>
 
-<button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})"
-style="padding:12px 25px; border:none; border-radius:25px; background:#4a90e2; color:white; cursor:pointer;">
+<button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
 About Me
 </button>
 
@@ -325,23 +313,21 @@ onclick="this.style.display='none'">
 <div class="card">
 <h2>My Goals</h2>
 <ul>
-<li>my goal is to graduate from school with achievements and have a stable job that pays 5 to 6 digits and have a 600+ cc motorcycle and a miata.
-</li>
+<li>my goal is to graduate from school with achievements and have a stable job that pays 5 to 6 digits and have a 600+ cc motorcycle and a miata.</li>
 </ul>
 </div>
 </section>
 
+<!-- ENVIRONMENT -->
 <section id="environment">
 <div class="card">
 <h2>My Environment</h2>
-
 <div class="gallery">
     <img src="pic1.jpg" alt="Environment 1">
     <img src="pic2.jpg" alt="Environment 2">
     <img src="pic3.jpg" alt="Environment 3">
     <img src="pic4.jpg" alt="Environment 4">
 </div>
-
 </div>
 </section>
 
@@ -360,21 +346,6 @@ onclick="this.style.display='none'">
 <p>Thank you for visiting my website!</p>
 </div>
 </section>
-
-<!-- FAKE AD -->
-<div id="fakeAd">
-<div id="fakeAdInner">
-<h2>Ops Ads muna</h2>
-<pre>
-──────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
-───▄▄██▌█ BEEP BEEP
-▄▄▄▌▐██▌█ ADS DELIVERY
-███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌
-▀(⊙)▀▀▀▀▀▀▀(⊙)(⊙)▀▀▀▀▀▀▀▀▀▀(⊙)
-</pre>
-<button onclick="document.getElementById('fakeAd').style.display='none'">Close</button>
-</div>
-</div>
 
 <footer>
 &copy; 2026 My Portfolio
