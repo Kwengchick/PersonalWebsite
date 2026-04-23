@@ -178,6 +178,24 @@ button:hover {
     gap: 15px;
     margin-top: 20px;
 }
+/* SINGLE IMAGE GALLERY */
+.single-gallery {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.single-gallery img {
+    width: 100%;
+    max-width: 400px; /* Keeps the single image from stretching too wide */
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.single-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(56,189,248,0.6);
+}
 
 .gallery img {
     width: 100%;
@@ -341,23 +359,28 @@ onclick="this.style.display='none'">
 </div>
 </section>
 
-<!-- STREET PHOTOGRAPHY -->
 <section id="street">
 <div class="card">
 <h2>Street Photography</h2>
-<div class="gallery">
+<div class="single-gallery">
     <img src="pic6.jpg" alt="Street Photography">
 </div>
 </div>
 </section>
 
-<!-- MY BRAND -->
 <section id="brand">
 <div class="card">
 <h2>My Brand / My Logo</h2>
-<div class="gallery">
+<div class="single-gallery">
     <img src="pic5.jpg" alt="My Logo">
 </div>
+
+<p style="margin-top:15px;">
+I chose this kind of logo because if I were to have a business I would like a clothing brand, 
+and I want my name to be displayed on the logo of my brand.
+</p>
+</div>
+</section>
 
 <p style="margin-top:15px;">
 I chose this kind of logo because if I were to have a business I would like a clothing brand, 
